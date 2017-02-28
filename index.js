@@ -35,6 +35,8 @@ var render=(function () {
                 }
             })
             render.conve()
+            render.handlescroll()
+            render.noticeHover()
         },
         services_toggle(){
             [].slice.call(aServiceShow).forEach(function (item) {
@@ -204,6 +206,54 @@ var render=(function () {
                     phoneSum.style.display='none'
                 }
             })
+        },
+
+        //当滚动的高度达到100px时，将搜索框固定在页面顶部
+        handlescroll(){
+            let flag
+            let timer
+            window.onscroll=function () {
+                if(flag){
+                    return
+                }
+                flag=true
+                timer=setTimeout(function () {
+                    flag=false
+                },50)
+                let scrollT=document.body.scrollTop||document.documentElement.scrollTop
+                let searchOut=document.querySelector('.search_out')
+                let h2=searchOut.querySelector('h2')
+                let h1=searchOut.querySelector('h1')
+                if(scrollT>=100){
+                   utils.addClass(searchOut,'search-fix')
+                    h2.style.display='block'
+                    h1.style.display='none'
+                }
+                else{
+                    utils.removeClass(searchOut,'search-fix')
+                    h1.style.display='block'
+                    h2.style.display='none'
+
+                }
+
+            }
+        },
+        //notice的移入
+        noticeHover(){
+            let notice=document.querySelector('.notice_inner')
+            let aBtn=notice.querySelectorAll('a')
+            let aDiv=[]
+            for(let i=0;i<aBtn.length;i++){
+                aDiv.push(aBtn[i].parentNode.querySelector('div'))
+                aBtn[i].onmouseover=function () {
+                    for(let i=0;i<aBtn.length;i++){
+                        aDiv[i].className=''
+                        aBtn[i].className=''
+                    }
+                    aDiv[i].className='active'
+                    aBtn[i].className='active-a'
+                }
+            }
         },
         removeAllC(conveHovers,convePs){
             for(var i=0;i<4;i++){
