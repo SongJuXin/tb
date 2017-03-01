@@ -357,18 +357,43 @@ header {
   width: 100%;
   background: white;
 }
+.search-fix {
+  position: fixed;
+  z-index: 2;
+  top: -55px;
+  height: 95px;
+  overflow: hidden;
+}
 .search_content {
   width: 1190px;
   margin: 0 auto;
   position: relative;
   height: 90px;
   padding: 30px 0;
+  overflow: hidden;
 }
 .logo {
   width: 265px;
   float: left;
 }
-.logo a {
+.logo h1 {
+  display: none;
+}
+.logo h2 {
+  width: 80px;
+  height: 40px;
+  position: relative;
+  top: 30px;
+}
+.logo h2 a {
+  width: 80px;
+  height: 40px;
+  background: url(img/tb.png) no-repeat;
+  background-size: contain;
+  overflow: hidden;
+  display: block;
+}
+.logo h1 a {
   width: 230px;
   height: 58px;
   background: url(img/tb.png) no-repeat;
@@ -1017,6 +1042,10 @@ div .pipe {
   background: white;
   margin-top: 1px;
 }
+.notice .active-a {
+  font-weight: 700;
+  border-bottom: 2px solid #f40;
+}
 .notice_inner a {
   height: 24px;
   display: inline-block;
@@ -1027,26 +1056,25 @@ div .pipe {
   padding: 0 3px;
   font-size: 12px;
 }
-.notice_inner > div:hover a {
-  font-weight: 700;
-  border-bottom: 2px solid #f40;
-}
-.notice_inner > div:hover div {
-  display: block;
-}
 .notice_inner > div {
   width: 20%;
   float: left;
 }
+.notice_inner > div .active {
+  display: block;
+}
 .notice_inner > div > div {
-  width: 290px;
+  width: 270px;
   position: absolute;
   left: 0;
   display: none;
+  margin: -10px 10px 10px;
 }
 .notice_inner > div > div p {
   font-size: 12px;
   display: inline-block;
+  height: 25px;
+  line-height: 25px;
 }
 .hot_notice {
   color: #f40;
